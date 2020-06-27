@@ -1,12 +1,12 @@
-# Maker Nix Packages
+# Nix Packages
 
-`makerpkgs` is a Nix package set with common Maker tools.
+`nixpkgs` is a Nix package set with common GEB tools.
 
 ## Usage
 
 ### Adding binary cache
 
-Add the Maker Nix build cache for faster install times:
+Add the Nix build cache for faster install times:
 
 ```sh
 nix run nixpkgs.cachix -c cachix use maker
@@ -14,7 +14,7 @@ nix run nixpkgs.cachix -c cachix use maker
 
 ### Installing a program from makerpkgs
 
-List `makerpkgs` specific packages:
+List `nixpkgs` specific packages:
 
 ```sh
 nix-env -f https://github.com/makerdao/makerpkgs/tarball/master --description \
@@ -49,7 +49,7 @@ nix-env -f https://github.com/makerdao/makerpkgs/tarball/master \
   -iA dappPkgsVersions.dapp-0_26_0.seth
 ```
 
-### Using makerpkgs in another Nix expression
+### Using nixpkgs in another Nix expression
 
 Put the following at the top of your `default.nix`:
 
