@@ -9,34 +9,34 @@
 Add the Nix build cache for faster install times:
 
 ```sh
-nix run nixpkgs.cachix -c cachix use maker
+nix run nixpkgs-pin.cachix -c cachix use reflexer
 ```
 
-### Installing a program from makerpkgs
+### Installing a program from nixpkgs-pin
 
 List `nixpkgs` specific packages:
 
 ```sh
-nix-env -f https://github.com/makerdao/makerpkgs/tarball/master --description \
-  -qaPA makerpkgs
+nix-env -f https://github.com/reflexer-labs/nixpkgs-pin/tarball/master --description \
+  -qaPA nixpkgs-pin
 ```
 
 Search for a package:
 
 ```sh
-nix search -f https://github.com/makerdao/makerpkgs/tarball/master seth
+nix search -f https://github.com/reflexer-labs/nixpkgs-pin/tarball/master seth
 ```
 
-Installing `seth` from `makerpkgs`:
+Installing `seth` from `nixpkgs-pin`:
 
 ```sh
-nix-env -f https://github.com/makerdao/makerpkgs/tarball/master -iA seth
+nix-env -f https://github.com/reflexer-labs/nixpkgs-pin/tarball/master -iA seth
 ```
 
 List available `dapptools` versions:
 
 ```sh
-nix-env -f https://github.com/makerdao/makerpkgs/tarball/master --description \
+nix-env -f https://github.com/reflexer-labs/nixpkgs-pin/tarball/master --description \
   -qaPA dappSources
 ```
 
@@ -45,7 +45,7 @@ Versions are then available under the path `dappPkgsVersions.<version>`.
 Installing `seth` from `dapptools` version `0.26.0`:
 
 ```sh
-nix-env -f https://github.com/makerdao/makerpkgs/tarball/master \
+nix-env -f https://github.com/reflexer-labs/nixpkgs-pin/tarball/master \
   -iA dappPkgsVersions.dapp-0_26_0.seth
 ```
 
@@ -54,7 +54,7 @@ nix-env -f https://github.com/makerdao/makerpkgs/tarball/master \
 Put the following at the top of your `default.nix`:
 
 ```nix
-{ pkgs ? import (fetchGit "https://github.com/makerdao/makerpkgs") {}
+{ pkgs ? import (fetchGit "https://github.com/reflexer-labs/nixpkgs-pin") {}
 }:
 ```
 
@@ -63,7 +63,7 @@ with the commit hash you wish to pin it at:
 
 ```nix
 { pkgs ? import (fetchGit {
-    url = "https://github.com/makerdao/makerpkgs";
+    url = "https://github.com/reflexer-labs/nixpkgs-pin";
     rev = "86958dbb74d0f2e5a22bc0f397fe943140dfef41";
   }) {}
 }:
